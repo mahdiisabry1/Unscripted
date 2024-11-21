@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 const MainLayout = () => {
   return (
     <>
-      <div className="px-4 md:px-8 lg:px-16 lx:px-32 2xl:px-34">
+      <div className="px-4 md:px-8 lg:px-24 lx:px-32 2xl:px-34">
         {/* Secondary Navbar */}
         <Navbar />
         <Outlet />
