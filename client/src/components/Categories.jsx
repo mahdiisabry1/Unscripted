@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Categories = () => {
   return (
     <>
-      <div className="hidden md:flex h-10 w-full mt-5 p-3 items-center justify-center gap-8 border-t-2 border-b-2">
+      <div className="hidden md:flex h-10 w-full mt-5 mb-5 p-3 items-center justify-center gap-8 border-t-2 border-b-2">
         {/* Categories */}
         <div className="flex-1 flex items-center justify-start md:gap-4 lg:gap-10 xl:gap-20">
           <Link to="/posts" className="underline">
@@ -18,8 +18,8 @@ const Categories = () => {
           <Link to="/posts?cat=politics" className="hover:underline">
             Politics
           </Link>
-          <Link to="/posts?cat=health" className="hover:underline">
-            Health
+          <Link to="/posts?cat=lifestyle" className="hover:underline">
+            Lifestyle
           </Link>
           <Link to="/posts?cat=science" className="hover:underline">
             Science

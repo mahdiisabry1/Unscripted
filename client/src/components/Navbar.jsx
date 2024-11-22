@@ -55,7 +55,7 @@ const Navbar = () => {
           </div>
           {/* mobile List */}
           <div
-            className={`h-[calc(100vh-56px)] w-full flex flex-col items-center justify-center gap-10 absolute top-16 bg-white transition-all duration-500 ${
+            className={`h-[calc(100vh-56px)] w-full flex flex-col items-center justify-center gap-10 absolute top-16 bg-white transition-all duration-500 z-10 ${
               open ? "-right-0" : "-right-[-100%]"
             }`}
           >

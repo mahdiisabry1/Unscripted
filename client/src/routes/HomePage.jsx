@@ -2,6 +2,7 @@ import AdBanner from "../components/AdBanner";
 import Categories from "../components/Categories";
 import FeaturedPosts from "../components/FeaturedPosts";
 import { Link } from "react-router-dom";
+import PostList from "../components/PostList";
 
 const Homepage = () => {
   return (
@@ -30,8 +31,18 @@ const Homepage = () => {
       {/* Category section */}
       <Categories />
       {/* Featured */}
+      <div className="border-t-4 border-b-2 mb-3 border-neutral-950">
+        <h1 className="my-1 text-2xl text-gray-700">Trending News</h1>
+      </div>
       <FeaturedPosts />
       {/* PostLists */}
+      <div className="border-t-4 border-b-2 mb-3 border-neutral-950">
+        <h1 className="my-1 text-2xl text-gray-700">Latest News</h1>
+      </div>
+      <div className="grid grid-cols-[3fr_1fr] mt-6 mb-6">
+        <PostList/>
+        <div className="hidden md:block">AdBanner</div>
+      </div>
     </>
   );
 };
