@@ -22,7 +22,7 @@ const Navbar = () => {
     Sunday: "⛓️‍💥",
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     const currentDate = new Date();
     const formattedDate = currentDate.toLocaleDateString("en-US", {
       weekday: "long",
@@ -35,7 +35,7 @@ const Navbar = () => {
     });
     const dateWithEmoji = `${weekdayEmojis[weekday] || ""} ${formattedDate}`;
     setDate(dateWithEmoji);
-  }, [weekdayEmojis])
+  }, [weekdayEmojis]);
 
   return (
     <>
@@ -66,7 +66,7 @@ const Navbar = () => {
           </div>
         </div>
         {/* Desktop Menu */}
-        <div className="hidden md:flex gap-8 xl:gap-12">
+        <div className="hidden md:flex gap-8 xl:gap-12 items-center">
           <Link to="/" className="flex items-center gap-2">
             <TiHomeOutline />
             Home

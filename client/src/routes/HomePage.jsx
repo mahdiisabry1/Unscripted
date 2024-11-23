@@ -39,8 +39,8 @@ const Homepage = () => {
       <div className="border-t-4 border-b-2 mb-3 border-neutral-950">
         <h1 className="my-1 text-2xl text-gray-700">Latest News</h1>
       </div>
-      <div className="grid grid-cols-[3fr_1fr] mt-6 mb-6">
-        <PostList/>
+      <div className="grid grid-cols-[1fr] md:grid-cols-[3fr_1fr] mt-6 mb-6">
+        <PostList />
         <div className="hidden md:block">AdBanner</div>
       </div>
     </>

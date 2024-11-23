@@ -6,7 +6,7 @@ const FeaturedPosts = () => {
     <>
       <div className="mt-6 mb-6 w-full grid grid-cols-1 md:grid-cols-[1fr_2fr_1fr] lg:grid-cols-[1fr_2fr_1fr] gap-2">
         <div className="hidden md:grid grid-rows-2 gap-1 h-full">
-          <div className="relative group">
+          <div className="relative group aspect-video">
             <Images
               src="default-image.jpg"
               className="object-cover w-full h-full absolute"
@@ -37,7 +37,7 @@ const FeaturedPosts = () => {
               </p>
             </div>
           </div>
-          <div className="relative group">
+          <div className="relative group aspect-video">
             <Images
               src="default-image.jpg"
               className="object-cover w-full h-full"
@@ -69,9 +69,9 @@ const FeaturedPosts = () => {
             </div>
           </div>
         </div>
-        <div className="grid grid-rows-1 gap-1 h-full relative group">
+        <div className="grid grid-rows-1 gap-1 h-full relative group aspect-video">
           <Images
-            src="israelpm.jpeg"
+            src="default-image.jpg"
             className="object-cover w-full h-full"
             alt="The-Breaking0Image"
           />
@@ -112,7 +112,7 @@ const FeaturedPosts = () => {
           </div>
         </div>
         <div className="grid grid-rows-2 gap-1 h-full">
-          <div className="relative group">
+          <div className="relative group aspect-video">
             <Images
               src="default-image.jpg"
               className="object-cover w-full h-full"
@@ -127,7 +127,7 @@ const FeaturedPosts = () => {
               </Link>
               <div className="relative font-semibold flex gap-2 items-center mt-3">
                 <Link
-                  to=""
+                  to="/test"
                   className="text-slate-950 bg-red-700 py-1 px-2 rounded text-xs"
                 >
                   Politics
@@ -143,7 +143,7 @@ const FeaturedPosts = () => {
               </p>
             </div>
           </div>
-          <div className="relative group">
+          <div className="relative group aspect-video">
             <Images
               src="default-image.jpg"
               className="object-cover w-full h-full"
@@ -158,7 +158,7 @@ const FeaturedPosts = () => {
               </Link>
               <div className="relative font-semibold flex gap-2 items-center mt-3">
                 <Link
-                  to=""
+                  to="/test"
                   className="text-slate-950 bg-red-700 py-1 px-2 rounded text-xs"
                 >
                   Politics

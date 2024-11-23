@@ -9,6 +9,7 @@ import LoginPage from "./routes/LoginPage.jsx";
 import RegisterPage from "./routes/RegisterPage.jsx";
 import MainLayout from "./layouts/MainLayout.jsx";
 import { ClerkProvider } from "@clerk/clerk-react";
+import SinglePostPage from "./routes/SinglePostPage.jsx";
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
@@ -30,7 +31,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/:slug",
-        element: <PostListPage />,
+        element: <SinglePostPage />,
       },
       {
         path: "/write",

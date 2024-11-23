@@ -5,13 +5,13 @@
 @tailwind utilities;
 
 :root {
-  --base-clr: #feffff;
-  --text-clr: #222629;
+  --base-clr: #fafaf8;
+  --text-clr: #23282d;
 }
 
 .darkmode {
-  --base-clr: #222629;
-  --text-clr: #feffff;
+  --base-clr: #23282d;
+  --text-clr: #fafaf8;
 }
 
 body {
