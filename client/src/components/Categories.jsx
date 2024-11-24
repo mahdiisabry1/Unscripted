@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Search from "./Search";
 
 const Categories = () => {
   return (
@@ -15,13 +16,13 @@ const Categories = () => {
           <Link to="/posts?cat=technology" className="hover:underline">
             Technology
           </Link>
-          <Link to="/posts?cat=politics" className="hover:underline">
+          <Link to="/posts?cat=sports" className="hover:underline">
             Sports
           </Link>
-          <Link to="/posts?cat=lifestyle" className="hover:underline">
+          <Link to="/posts?cat=cybersecurity" className="hover:underline">
             Cybersecurity
           </Link>
-          <Link to="/posts?cat=science" className="hover:underline">
+          <Link to="/posts?cat=lifestyle" className="hover:underline">
             Lifestyle
           </Link>
           <Link to="/posts?cat=religion" className="hover:underline">
@@ -30,14 +31,7 @@ const Categories = () => {
         </div>
         <span className="text-xl font-medium">|</span>
         {/* Search */}
-        <div className="">
-          <input
-            placeholder="Search..."
-            className="input w-56 transition-all focus:w-64 outline-none"
-            name="search"
-            type="search"
-          />
-        </div>
+        <Search />
       </div>
     </>
   );
