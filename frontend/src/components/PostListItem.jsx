@@ -1,23 +1,28 @@
+/* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import Images from "./Images";
+import { format } from "timeago.js";
 
-const PostListItem = () => {
+const PostListItem = ({ post }) => {
   return (
     <>
-      <div className="flex flex-col xl:flex-row gap-4">
+      <div className="flex flex-col xl:flex-row gap-4 mb-8">
         {/* Image */}
-        <div className="hidden md:block md:w-full lg:w-[40rem] h-44">
-          <Images
-            src="default-image.jpg"
-            className="object-cover w-full h-full"
-            alt="The-Breaking0Image"
-          />
-        </div>
+        {post.img && (
+          <div className="hidden md:block">
+            <div className="w-[370px] h-48">
+              <Images
+                src={post.img}
+                className="object-cover w-full h-full"
+                alt="The-Breaking0Image"
+              />
+            </div>
+          </div>
+        )}
         {/* Details */}
         <div className="">
           <Link to="/test" className="text-3xl hover:underline">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum
-            provident debitis consequuntur ratione pariatur quam.
+            {post.title}
           </Link>
           <p>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit.
@@ -30,9 +35,9 @@ const PostListItem = () => {
             </div>
             <div>
               <span>On - </span>
-              <Link>Politics</Link>
+              <Link to={`/${post.category}`}>Politics</Link>
             </div>
-            <span>2 days ago</span>
+            <span>{format(post.createdAt)}</span>
           </div>
         </div>
       </div>

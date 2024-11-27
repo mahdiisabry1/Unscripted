@@ -83,7 +83,6 @@ const CreateBlog = () => {
               Cover Image
             </button>
           </Upload>
-
           <input
             className="text-4xl font-semibold bg-transparent outline-none"
             type="text"
@@ -94,12 +93,12 @@ const CreateBlog = () => {
           <div className="">
             <label htmlFor="">Choose a category : </label>
             <select name="category" id="">
-              <option value="general">Geopolitics</option>
-              <option value="general">Technology</option>
-              <option value="general">Sports</option>
-              <option value="general">Cybersecurity</option>
-              <option value="general">Lifestyle</option>
-              <option value="general">Religion</option>
+              <option value="Geopolitics">Geopolitics</option>
+              <option value="Technology">Technology</option>
+              <option value="Sports">Sports</option>
+              <option value="Cybersecurity">Cybersecurity</option>
+              <option value="Lifestyle">Lifestyle</option>
+              <option value="Religion">Religion</option>
             </select>
           </div>
           <textarea
