@@ -35,7 +35,7 @@ const PostListItem = ({ post }) => {
             </div>
             <div>
               <span>On - </span>
-              <Link to={`/${post.category}`}>Politics</Link>
+              <Link to={`/${post.category}`}>{post.category}</Link>
             </div>
             <span>{format(post.createdAt)}</span>
           </div>

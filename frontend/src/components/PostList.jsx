@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import PostListItem from "./PostListItem";
 import axios from "axios";
