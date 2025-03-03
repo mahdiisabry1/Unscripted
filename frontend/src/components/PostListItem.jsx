@@ -4,6 +4,7 @@ import Images from "./Images";
 import { format } from "timeago.js";
 
 const PostListItem = ({ post }) => {
+  
   return (
     <>
       <div className="flex flex-col xl:flex-row gap-4 mb-8">
@@ -21,7 +22,7 @@ const PostListItem = ({ post }) => {
         )}
         {/* Details */}
         <div className="">
-          <Link to="/test" className="text-3xl hover:underline">
+          <Link to={`/${post.slug}`} className="text-3xl hover:underline">
             {post.title}
           </Link>
           <p>

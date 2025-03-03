@@ -1,9 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { MdDeleteOutline } from "react-icons/md";
 import { FaBookmark } from "react-icons/fa";
 import Images from "../components/Images";
 import { useState } from "react";
 import Comments from "../components/Comments";
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
+import { format } from "timeago.js";
+
+const fetchPost = async (slug) => {
+  const res = await axios.get(`${import.meta.env.VITE_API_URL}/posts/${slug}`);
+  return res.data;
+};
 
 const SinglePostPage = () => {
   const [isBookmarked, setIsBookmarked] = useState(false);
@@ -12,39 +20,53 @@ const SinglePostPage = () => {
     setIsBookmarked(!isBookmarked);
   };
 
+  const { slug } = useParams();
+
+  const { isPending, error, data } = useQuery({
+    queryKey: ["post", slug],
+    queryFn: () => fetchPost(slug),
+  });
+
+  if (isPending) return "Loading";
+  if (error) return "Error.." + error.message;
+  if (!data) return "post not found";
+
   return (
     <>
       <div className="mx-10 md:mx-20 lg:mx-24 my-10">
         <div className="">
           <Link to="/cat" className="relative z-10 hover:text-red-800">
-            Category
+            {data.category}
           </Link>
         </div>
         <div className="">
           <h1 className="text-5xl mb-8">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga? Lorem
-            ipsum dolor sit, amet consectetur adipisicing elit. Sunt, maxime!
+            {data.title}
           </h1>
           <div>
             <span>
               by{" "}
               <Link to="/profile" className="hover:text-red-800">
-                Mahdi Sabry
+                {data.user.username}
               </Link>{" "}
               |{" "}
             </span>
-            <span>Published on Date </span>
+            <span>{format(data.createdAt)}</span>
           </div>
         </div>
         <div className="w-full grid lg:grid-cols-[3fr_1fr] gap-2">
           <div className="">
             {/* Image */}
             <div className="w-full h md:h-72 lg:h-[30rem]">
-              <Images
-                src="default-image.jpg"
-                className="lg:block object-cover w-full h-full"
-                alt="The-Breaking0Image"
-              />
+              {data.img && (
+                <div className="hidden h-full lg:block">
+                  <Images
+                    src={data.img}
+                    w="600"
+                    className="max-w-full h-full w-full object-cover"
+                  />
+                </div>
+              )}
             </div>
             <div className="mt-5 text-justify">
               <p>

@@ -9,6 +9,8 @@ import { toast } from "react-toastify";
 import { FaImage } from "react-icons/fa6";
 import { FaVideo } from "react-icons/fa";
 import Upload from "../components/Upload";
+// import OpenAI from "openai";
+
 
 const CreateBlog = () => {
   const { isLoaded, isSignedIn } = useUser();
@@ -17,6 +19,23 @@ const CreateBlog = () => {
   const [img, setImg] = useState("");
   const [video, setVideo] = useState("");
   const [progress, setProgress] = useState(0);
+
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+
+  // const generateDescription = async () => {
+  //   try {
+  //     const response = await openai.completions.create({
+  //       model: "text-davinci-003", // or any other model you prefer
+  //       prompt: `Generate a short description for a story titled "${title}"`,
+  //       max_tokens: 100,
+  //     });
+
+  //     setDescription(response.choices[0].text.trim());
+  //   } catch (error) {
+  //     console.error("Error generating description:", error);
+  //   }
+  // };
 
   useEffect(() => {
     img && setValue((prev) => prev + `<p><image src="${img.url}"/></p>`);
@@ -89,7 +108,16 @@ const CreateBlog = () => {
             name="title"
             id=""
             placeholder="My Awsome Story"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
           />
+          <button
+            type="button"
+            className="ml-2 px-4 py-2 bg-blue-500 text-white rounded"
+            // onClick={generateDescription}
+          >
+            Generate Short Description with AI
+          </button>
           <div className="">
             <label htmlFor="">Choose a category : </label>
             <select name="category" id="">
@@ -106,6 +134,8 @@ const CreateBlog = () => {
             name="desc"
             id=""
             placeholder="A short description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
           />
           <div className="flex flex-1">
             <div className="flex flex-col gap-2 mr-2 justify-center">

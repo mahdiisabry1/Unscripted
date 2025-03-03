@@ -1,6 +1,25 @@
+import axios from "axios";
 import Comment from "./Comment";
+import { useQuery } from "@tanstack/react-query";
 
-const Comments = () => {
+const fetchComments = async (postId) => {
+  const res = await axios.get(
+    `${import.meta.env.VITE_API_URL}/comments/${postId}`
+  );
+  return res.data;
+};
+
+// eslint-disable-next-line react/prop-types
+const Comments = ({ postId }) => {
+  const { isPending, error, data } = useQuery({
+    queryKey: ["comments", postId],
+    queryFn: () => fetchComments(postId),
+  });
+
+  if (isPending) return "Loading...";
+  if (error) return "Something went wrong!" + error.message;
+  if (!data) return "Comments not found";
+
   return (
     <>
       <div className="flex flex-col gap-8 lg:w-3/5 mt-5">
@@ -16,11 +35,9 @@ const Comments = () => {
             Comment
           </button>
         </div>
-        <Comment />
-        <Comment />
-        <Comment />
-        <Comment />
-        <Comment />
+        {data.map((comment) => (
+          <Comment key={comment._id} comment={comment} />
+        ))}
       </div>
     </>
   );
