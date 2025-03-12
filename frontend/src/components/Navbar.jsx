@@ -7,6 +7,7 @@ import { TiHomeOutline } from "react-icons/ti";
 import { FcAbout } from "react-icons/fc";
 import { Link } from "react-router-dom";
 import { SignedIn, SignedOut, useAuth, UserButton } from "@clerk/clerk-react";
+import Write from "./Write";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -93,6 +94,7 @@ const Navbar = () => {
             </Link>
           </SignedOut>
           <SignedIn>
+            <Write />
             <UserButton />
           </SignedIn>
         </div>

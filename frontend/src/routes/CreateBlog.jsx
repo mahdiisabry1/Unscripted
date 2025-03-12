@@ -11,7 +11,6 @@ import { FaVideo } from "react-icons/fa";
 import Upload from "../components/Upload";
 // import OpenAI from "openai";
 
-
 const CreateBlog = () => {
   const { isLoaded, isSignedIn } = useUser();
   const [value, setValue] = useState("");
@@ -54,6 +53,7 @@ const CreateBlog = () => {
   const mutation = useMutation({
     mutationFn: async (newPost) => {
       const token = await getToken();
+      console.log(token);
       return axios.post(`${import.meta.env.VITE_API_URL}/posts`, newPost, {
         headers: {
           Authorization: `Bearer ${token}`,
