@@ -69,10 +69,10 @@ const FeaturedPosts = () => {
             </div>
           </div>
         </div>
-        <div className="grid grid-rows-1 gap-1 h-full relative group aspect-video overflow-hidden">
+        <div className="grid grid-rows-1 gap-1 w-full h-full relative group aspect-video overflow-hidden border-black outline-8">
           <Link
             to="/test"
-            className="group text-white font-extrabold md:text-2xl lg:text-3xl cursor-pointer hover:underline mb-1 text-justify"
+            className="group text-white font-extrabold md:text-2xl lg:text-3xl cursor-pointer hover:underline text-justify"
           >
             <Images
               src="default-image.jpg"

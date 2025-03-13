@@ -4,6 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .quill-editor img {
+    @apply max-w-full h-auto w-80 block mx-auto;
+  }
+}
+
 :root {
   --base-clr: #fafaf8;
   --text-clr: #23282d;

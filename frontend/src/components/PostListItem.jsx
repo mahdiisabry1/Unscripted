@@ -4,7 +4,6 @@ import Images from "./Images";
 import { format } from "timeago.js";
 
 const PostListItem = ({ post }) => {
-  
   return (
     <>
       <div className="flex flex-col xl:flex-row gap-4 mb-8">
@@ -21,9 +20,9 @@ const PostListItem = ({ post }) => {
           </div>
         )}
         {/* Details */}
-        <div className="">
+        <div className="w-full overflow-hidden">
           <Link to={`/${post.slug}`} className="text-3xl hover:underline">
-            {post.title}
+            <p>{post.title}</p>
           </Link>
           <p>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit.
@@ -32,7 +31,7 @@ const PostListItem = ({ post }) => {
           <div className="flex gap-7">
             <div>
               <span>Written by - </span>
-              <Link>Jhon Doe</Link>
+              <Link>{post.user}</Link>
             </div>
             <div>
               <span>On - </span>

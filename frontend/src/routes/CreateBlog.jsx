@@ -90,7 +90,7 @@ const CreateBlog = () => {
 
   return (
     <>
-      <div className="h-[calc(100vh-56px)] flex flex-col gap-6">
+      <div className="flex flex-col gap-6">
         <h1 className="text-lg font-light">Create a New Post</h1>
         <form
           onSubmit={handleSubmit}
@@ -98,26 +98,46 @@ const CreateBlog = () => {
           className="flex flex-col gap-6 flex-1 mb-6"
         >
           <Upload type="image" setProgress={setProgress} setData={setCover}>
-            <button className="w-max p-2 shadow-md text-sm text-gray-500 bg-white">
-              Cover Image
-            </button>
+            <div className="relative w-80 h-32 flex items-center justify-center border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-gray-400 overflow-hidden">
+              {cover ? (
+                <img
+                  src={cover}
+                  alt="Cover Preview"
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <span className="text-sm text-gray-500">Cover Image</span>
+              )}
+
+              {/* Pencil icon on hover */}
+              <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity">
+                <svg
+                  className="w-6 h-6 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
+                  ></path>
+                </svg>
+              </div>
+            </div>
           </Upload>
           <input
             className="text-4xl font-semibold bg-transparent outline-none"
             type="text"
             name="title"
             id=""
-            placeholder="My Awsome Story"
+            placeholder="Title Here"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
-          <button
-            type="button"
-            className="ml-2 px-4 py-2 bg-blue-500 text-white rounded"
-            // onClick={generateDescription}
-          >
-            Generate Short Description with AI
-          </button>
+
           <div className="">
             <label htmlFor="">Choose a category : </label>
             <select name="category" id="">
@@ -129,6 +149,13 @@ const CreateBlog = () => {
               <option value="Religion">Religion</option>
             </select>
           </div>
+          <button
+            type="button"
+            className="ml-2 px-4 py-2 bg-blue-500 text-white rounded"
+            // onClick={generateDescription}
+          >
+            Generate Short Description with AI
+          </button>
           <textarea
             className="p-4 bg-white shadow-md"
             name="desc"
@@ -148,13 +175,12 @@ const CreateBlog = () => {
             </div>
             <ReactQuill
               theme="snow"
-              className="flex-1 rounded-xl bg-white shadow-md"
+              className="flex-1 rounded-xl bg-white shadow-md quill-editor"
               value={value}
               onChange={setValue}
               readOnly={0 < progress && progress < 100}
             />
           </div>
-
           <button
             disabled={mutation.isPending || (0 < progress && progress < 100)}
             className="bg-blue-800 text-white font-medium mt-4 p-2 w-40 disabled:bg-red-500 disabled:cursor-not-allowed"
