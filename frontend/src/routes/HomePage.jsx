@@ -18,7 +18,7 @@ const Homepage = () => {
             Investigate, Write, Share: The Path of a Private Blogger
           </h1>
           <p className="mt-8 text-base md:text-xl">
-            Exploring Geopolitics, Cybersecurity, and Beyond
+            Exploring Geopolitics, Technology, and Beyond
           </p>
         </div>
       </div>

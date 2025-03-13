@@ -6,7 +6,7 @@
 
 @layer components {
   .quill-editor img {
-    @apply max-w-full h-auto w-80 block mx-auto;
+    @apply max-w-full h-auto w-80 block;
   }
 }
 

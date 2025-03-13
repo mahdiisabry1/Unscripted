@@ -59,8 +59,8 @@ const SideMenu = () => {
           <Link className="underline" to="/posts?cat=sports">
             Sports
           </Link>
-          <Link className="underline" to="/posts?cat=cybersecurity">
-            Cybersecurity
+          <Link className="underline" to="/posts?cat=entertainment">
+            Entertainment
           </Link>
           <Link className="underline" to="/posts?cat=lifestyle">
             Lifestyle

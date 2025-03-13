@@ -19,8 +19,8 @@ const Categories = () => {
           <Link to="/posts?cat=sports" className="hover:underline">
             Sports
           </Link>
-          <Link to="/posts?cat=cybersecurity" className="hover:underline">
-            Cybersecurity
+          <Link to="/posts?cat=entertainment" className="hover:underline">
+            Entertainment
           </Link>
           <Link to="/posts?cat=lifestyle" className="hover:underline">
             Lifestyle

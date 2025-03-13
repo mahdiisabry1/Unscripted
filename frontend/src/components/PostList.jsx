@@ -34,8 +34,6 @@ const PostList = () => {
   if (status === "error") return "Some thing went wrong";
   const allPosts = data?.pages?.flatMap((page) => page.posts) || [];
 
-  console.log(allPosts);
-
   console.log(data);
   return (
     <>
@@ -50,7 +48,7 @@ const PostList = () => {
           </p>
         }
       >
-        {allPosts.map((post) => (
+        {allPosts.slice().reverse().map((post) => (
           <PostListItem key={post._id} post={post} />
         ))}
       </InfiniteScroll>

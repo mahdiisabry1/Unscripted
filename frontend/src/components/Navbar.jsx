@@ -4,10 +4,10 @@ import { IoMenu } from "react-icons/io5";
 import { IoClose } from "react-icons/io5";
 import { IoIosTrendingUp } from "react-icons/io";
 import { TiHomeOutline } from "react-icons/ti";
-import { FcAbout } from "react-icons/fc";
 import { Link } from "react-router-dom";
 import { SignedIn, SignedOut, useAuth, UserButton } from "@clerk/clerk-react";
 import Write from "./Write";
+import { FaUser } from "react-icons/fa6";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -68,7 +68,7 @@ const Navbar = () => {
           >
             <Link to="/">Home</Link>
             <Link to="/">Trending</Link>
-            <Link to="/">About</Link>
+            <Link to="/">Profile</Link>
             <Link to="/">Login</Link>
           </div>
         </div>
@@ -82,9 +82,9 @@ const Navbar = () => {
             <IoIosTrendingUp />
             Trending
           </Link>
-          <Link to="/" className="flex items-center gap-2">
-            <FcAbout />
-            About
+          <Link to="/profile" className="flex items-center gap-2">
+            <FaUser />
+            Profile
           </Link>
           <SignedOut>
             <Link to="/login">

@@ -8,7 +8,7 @@ const PostListPage = () => {
   return (
     <>
       <div className="">
-        <h1 className="mb-8 text-2xl">dynamic blog</h1>
+        <h1 className="mb-8 text-2xl">All</h1>
         <button
           onClick={() => setOpen((prev) => !prev)}
           className="bg-blue-800 text-sm text-white px-4 py-2 mb-4 md:hidden"

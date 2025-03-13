@@ -98,7 +98,7 @@ const CreateBlog = () => {
           className="flex flex-col gap-6 flex-1 mb-6"
         >
           <Upload type="image" setProgress={setProgress} setData={setCover}>
-            <div className="relative w-80 h-32 flex items-center justify-center border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-gray-400 overflow-hidden">
+            <div className="relative h-36 flex items-center justify-center border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-gray-400 overflow-hidden">
               {cover ? (
                 <img
                   src={cover}
@@ -129,11 +129,11 @@ const CreateBlog = () => {
             </div>
           </Upload>
           <input
-            className="text-4xl font-semibold bg-transparent outline-none"
+            className="text-4xl font-semibold bg-transparent p-4"
             type="text"
             name="title"
             id=""
-            placeholder="Title Here"
+            placeholder="KEEP IT SHORT"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
@@ -144,7 +144,7 @@ const CreateBlog = () => {
               <option value="Geopolitics">Geopolitics</option>
               <option value="Technology">Technology</option>
               <option value="Sports">Sports</option>
-              <option value="Cybersecurity">Cybersecurity</option>
+              <option value="Entertainment">Entertainment</option>
               <option value="Lifestyle">Lifestyle</option>
               <option value="Religion">Religion</option>
             </select>
@@ -154,13 +154,13 @@ const CreateBlog = () => {
             className="ml-2 px-4 py-2 bg-blue-500 text-white rounded"
             // onClick={generateDescription}
           >
-            Generate Short Description with AI
+            Generate A Catchy Description with AI
           </button>
           <textarea
             className="p-4 bg-white shadow-md"
             name="desc"
             id=""
-            placeholder="A short description"
+            placeholder="Give a sneak peek of what this is about..."
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
