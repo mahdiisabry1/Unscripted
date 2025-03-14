@@ -84,6 +84,9 @@ const SinglePostPage = () => {
                   className="cursor-pointer"
                 />
                 <div className="hover:text-red-600 cursor-pointer">Report</div>
+                <div className="hover:text-gray-400 cursor-pointer">
+                  Summarize
+                </div>
               </span>
             </div>
             <Comments />

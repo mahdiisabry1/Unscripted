@@ -129,7 +129,7 @@ const CreateBlog = () => {
             </div>
           </Upload>
           <input
-            className="text-4xl font-semibold bg-transparent p-4"
+            className="font-semibold bg-transparent p-4"
             type="text"
             name="title"
             id=""
