@@ -31,7 +31,7 @@ const PostListItem = ({ post }) => {
           <div className="flex gap-7">
             <div>
               <span>Written by - </span>
-              <Link>{post.user}</Link>
+              <Link>{post.user.username}</Link>
             </div>
             <div>
               <span>On - </span>
