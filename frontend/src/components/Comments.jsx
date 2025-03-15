@@ -71,8 +71,7 @@ const Comments = ({ postId }) => {
         >
           <textarea
             name="desc"
-            id=""
-            placeholder="Write a comment..."
+            placeholder="Share your thoughts..."
             className="p-5 w-full"
           />
           <button className="border-2 p-2 px-5 bg-blue-800 font-medium text-white">

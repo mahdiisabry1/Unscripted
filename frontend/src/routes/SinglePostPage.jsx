@@ -85,11 +85,11 @@ const SinglePostPage = () => {
                 />
                 <div className="hover:text-red-600 cursor-pointer">Report</div>
                 <div className="hover:text-gray-400 cursor-pointer">
-                  Summarize
+                  <button className="p-4">Summerize</button>
                 </div>
               </span>
             </div>
-            <Comments />
+            <Comments postId={data._id}/>
           </div>
           <div className="border-2">AdBanner</div>
         </div>
