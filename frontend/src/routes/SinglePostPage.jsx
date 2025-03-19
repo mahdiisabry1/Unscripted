@@ -16,6 +16,8 @@ const fetchPost = async (slug) => {
 
 const SinglePostPage = () => {
   const [isBookmarked, setIsBookmarked] = useState(false);
+  const [summary, setSummary] = useState("");
+  const [isSummarizing, setIsSummarizing] = useState(false);
 
   const handleBookmarClick = () => {
     setIsBookmarked(!isBookmarked);
@@ -27,6 +29,23 @@ const SinglePostPage = () => {
     queryKey: ["post", slug],
     queryFn: () => fetchPost(slug),
   });
+
+  const handleSummarize = async () => {
+    setIsSummarizing(true);
+    try {
+      const res = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/summarize`,
+        {
+          content: sanitizedContent,
+        }
+      );
+      setSummary(res.data.summary);
+    } catch (error) {
+      console.error("Error summarizing text" + error);
+    } finally {
+      setIsSummarizing(false);
+    }
+  };
 
   if (isPending) return "Loading";
   if (error) return "Error.." + error.message;
@@ -85,11 +104,23 @@ const SinglePostPage = () => {
                 />
                 <div className="hover:text-red-600 cursor-pointer">Report</div>
                 <div className="hover:text-gray-400 cursor-pointer">
-                  <button className="p-4">Summerize</button>
+                  <button
+                    onClick={handleSummarize}
+                    disabled={isSummarizing}
+                    className="p-4"
+                  >
+                    {isSummarizing ? "Summarizing..." : "Summarize"}
+                  </button>
                 </div>
               </span>
+              {summary && (
+                <div className="mt-5 p-4 bg-gray-100 rounded-lg">
+                  <h3 className="font-bold text-lg mb-2">Summary:</h3>
+                  <p>{summary}</p>
+                </div>
+              )}
             </div>
-            <Comments postId={data._id}/>
+            <Comments postId={data._id} />
           </div>
           <div className="border-2">AdBanner</div>
         </div>

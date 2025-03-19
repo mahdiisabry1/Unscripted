@@ -9,21 +9,27 @@ router.post("/summarize", (req, res) => {
     return res.status(400).json({ error: "Content is required" });
   }
 
-  // Call the Python script
-  exec(`python3 summarize.py "${content}"`, (error, stdout, stderr) => {
-    if (error) {
-      console.error(`Error: ${error.message}`);
-      return res.status(500).json({ error: "Failed to summarize text" });
-    }
-    if (stderr) {
-      console.error(`Stderr: ${stderr}`);
-      return res.status(500).json({ error: "Failed to summarize text" });
-    }
+  const escapedContent = sanitizedContent.replace(/"/g, '\\"');
 
-    // Send the summary back to the client
-    const summary = stdout.trim();
-    res.json({ summary });
-  });
+  // Call the Python script
+  exec(
+    `python summarize.py "${escapedContent}"`,
+    { timeout: 30000 },
+    (error, stdout, stderr) => {
+      if (error) {
+        console.error(`Error: ${error.message}`);
+        return res.status(500).json({ error: "Failed to summarize text" });
+      }
+      if (stderr) {
+        console.error(`Stderr: ${stderr}`);
+        return res.status(500).json({ error: "Failed to summarize text" });
+      }
+
+      // Send the summary back to the client
+      const summary = stdout.trim();
+      res.json({ summary });
+    }
+  );
 });
 
 export default router;
