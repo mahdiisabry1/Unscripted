@@ -9,4 +9,4 @@ def summarize_text(text, max_length=130, min_length=30):
 if __name__ == "__main__":
     text = sys.argv[1]  # Get the text from command-line arguments
     summary = summarize_text(text)
-    print(summary) 
+    print(summary)
