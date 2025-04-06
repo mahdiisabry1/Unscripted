@@ -10,7 +10,7 @@ router.post("/summarize", (req, res) => {
   }
 
   // Call the Python script
-  exec(`python3 summarize.py "${content}"`, (error, stdout, stderr) => {
+  exec(`python summarize.py "${content}"`, (error, stdout, stderr) => {
     if (error) {
       console.error(`Error: ${error.message}`);
       return res.status(500).json({ error: "Failed to summarize text" });
