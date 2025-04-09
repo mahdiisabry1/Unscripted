@@ -1,13 +1,11 @@
 import { Link, useParams } from "react-router-dom";
-import { MdDeleteOutline } from "react-icons/md";
-import { FaBookmark, FaEdit } from "react-icons/fa";
 import Images from "../components/Images";
-import { useState } from "react";
 import Comments from "../components/Comments";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { format } from "timeago.js";
 import DOMPurify from "dompurify";
+import PostMenuAction from "../components/PostMenuAction";
 
 const fetchPost = async (slug) => {
   const res = await axios.get(`${import.meta.env.VITE_API_URL}/posts/${slug}`);
@@ -15,12 +13,6 @@ const fetchPost = async (slug) => {
 };
 
 const SinglePostPage = () => {
-  const [isBookmarked, setIsBookmarked] = useState(false);
-
-  const handleBookmarClick = () => {
-    setIsBookmarked(!isBookmarked);
-  };
-
   const { slug } = useParams();
 
   const { isPending, error, data } = useQuery({
@@ -72,24 +64,7 @@ const SinglePostPage = () => {
             <div className="mt-5 text-justify [&_img]:max-w-full [&_img]:h-auto [&_img]:w-80 [&_img]:block [&_img]:mx-auto">
               <div dangerouslySetInnerHTML={{ __html: sanitizedContent }} />
             </div>
-            <div className="mt-5">
-              <span className="flex gap-5 items-center">
-                <FaEdit className="cursor-pointer" />
-                <MdDeleteOutline className="text-2xl cursor-pointer" />
-                <FaBookmark
-                  fill={isBookmarked ? "black" : "transparent"}
-                  stroke="black"
-                  width="1em"
-                  strokeWidth="1em"
-                  onClick={handleBookmarClick}
-                  className="cursor-pointer"
-                />
-                <div className="hover:text-red-600 cursor-pointer">Report</div>
-                <div className="hover:text-gray-400 cursor-pointer">
-                  <button className="p-4">Summarize</button>
-                </div>
-              </span>
-            </div>
+            <PostMenuAction post={data}/>
             <Comments postId={data._id} />
           </div>
           <div className="border-2">AdBanner</div>
