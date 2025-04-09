@@ -99,7 +99,7 @@ const CreateBlog = () => {
           className="flex flex-col gap-6 flex-1 mb-6"
         >
           <Upload type="image" setProgress={setProgress} setData={setCover}>
-            <div className="relative h-36 flex items-center justify-center border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-gray-400 overflow-hidden">
+            <div className="relative h-36 w-5/12 flex items-center justify-center border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-gray-400 overflow-hidden">
               {cover ? (
                 <img
                   src={cover}
@@ -128,6 +128,7 @@ const CreateBlog = () => {
                 </svg>
               </div>
             </div>
+            <div className="w-full pointer-events-none">Hello</div>
           </Upload>
           <input
             className="font-semibold bg-transparent p-4"
