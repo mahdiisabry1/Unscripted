@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { MdDeleteOutline } from "react-icons/md";
-import { FaBookmark } from "react-icons/fa";
+import { FaBookmark, FaEdit } from "react-icons/fa";
 import Images from "../components/Images";
 import { useState } from "react";
 import Comments from "../components/Comments";
@@ -43,7 +43,7 @@ const SinglePostPage = () => {
           </Link>
         </div>
         <div className="">
-          <h1 className="text-5xl mb-8">{data.title}</h1>
+          <h1 className="text-5xl mb-4">{data.title}</h1>
           <div>
             <span>
               by{" "}
@@ -74,6 +74,7 @@ const SinglePostPage = () => {
             </div>
             <div className="mt-5">
               <span className="flex gap-5 items-center">
+                <FaEdit className="cursor-pointer" />
                 <MdDeleteOutline className="text-2xl cursor-pointer" />
                 <FaBookmark
                   fill={isBookmarked ? "black" : "transparent"}
@@ -85,11 +86,11 @@ const SinglePostPage = () => {
                 />
                 <div className="hover:text-red-600 cursor-pointer">Report</div>
                 <div className="hover:text-gray-400 cursor-pointer">
-                  <button className="p-4">Summerize</button>
+                  <button className="p-4">Summarize</button>
                 </div>
               </span>
             </div>
-            <Comments postId={data._id}/>
+            <Comments postId={data._id} />
           </div>
           <div className="border-2">AdBanner</div>
         </div>
