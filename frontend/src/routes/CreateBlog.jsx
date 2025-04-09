@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import { FaImage } from "react-icons/fa6";
 import { FaVideo } from "react-icons/fa";
 import Upload from "../components/Upload";
+import CategoryTagInput from "../components/CategoryTag";
 // import OpenAI from "openai";
 
 const CreateBlog = () => {
@@ -137,18 +138,7 @@ const CreateBlog = () => {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
-
-          <div className="">
-            <label htmlFor="">Choose a category : </label>
-            <select name="category" id="">
-              <option value="Geopolitics">Geopolitics</option>
-              <option value="Technology">Technology</option>
-              <option value="Sports">Sports</option>
-              <option value="Entertainment">Entertainment</option>
-              <option value="Lifestyle">Lifestyle</option>
-              <option value="Religion">Religion</option>
-            </select>
-          </div>
+          <CategoryTagInput />
           <button
             type="button"
             className="ml-2 px-4 py-2 bg-blue-500 text-white rounded"

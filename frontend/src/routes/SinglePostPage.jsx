@@ -30,7 +30,7 @@ const SinglePostPage = () => {
     <>
       <div className="mx-10 md:mx-20 lg:mx-24 my-10">
         <div className="">
-          <Link to="/cat" className="relative z-10 hover:text-red-800">
+          <Link to="/posts?cat=world" className="relative z-10 hover:text-red-800">
             {data.category}
           </Link>
         </div>

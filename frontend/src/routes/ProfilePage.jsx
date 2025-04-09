@@ -7,18 +7,18 @@ const ProfilePage = () => {
             <img src="#" alt="" />
           </div>
         </div>
+        <div className="col-span-2 row-span-3 col-start-1 row-start-3">
+          About Me
+        </div>
         <div className="row-span-2">
-          <div className="">My Name</div>
+          <div className="">Name</div>
           <div className="">Title</div>
           <div className="">Total Posts : </div>
           <div className="">Total post views : </div>
-          <div className="flex">
+          <div className="flex flex-col">
             <div>Send Message</div>
             <div>Report User</div>
           </div>
-        </div>
-        <div className="col-span-2 row-span-3 col-start-1 row-start-3">
-          About Me
         </div>
         <div className="col-span-3 row-span-5 col-start-3 row-start-1 ">
           <div className="grid grid-cols-6 grid-rows-6 gap-2 h-full">
