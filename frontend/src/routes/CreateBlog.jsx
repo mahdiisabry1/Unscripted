@@ -10,7 +10,6 @@ import { FaImage } from "react-icons/fa6";
 import { FaVideo } from "react-icons/fa";
 import Upload from "../components/Upload";
 import CategoryTagInput from "../components/CategoryTag";
-// import OpenAI from "openai";
 
 const CreateBlog = () => {
   const { isLoaded, isSignedIn } = useUser();
@@ -22,20 +21,6 @@ const CreateBlog = () => {
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-
-  // const generateDescription = async () => {
-  //   try {
-  //     const response = await openai.completions.create({
-  //       model: "text-davinci-003", // or any other model you prefer
-  //       prompt: `Generate a short description for a story titled "${title}"`,
-  //       max_tokens: 100,
-  //     });
-
-  //     setDescription(response.choices[0].text.trim());
-  //   } catch (error) {
-  //     console.error("Error generating description:", error);
-  //   }
-  // };
 
   useEffect(() => {
     img && setValue((prev) => prev + `<p><image src="${img.url}"/></p>`);
