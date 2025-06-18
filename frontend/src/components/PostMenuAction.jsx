@@ -7,11 +7,13 @@ import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import DeletePopup from "../ui/DeletePopup";
 
 const PostMenuAction = ({ post }) => {
   const { user } = useUser();
   const { getToken } = useAuth();
   const navigate = useNavigate();
+  const [showDeletePopup, setShowDeletePopup] = useState(false);
 
   const deleteMutation = useMutation({
     mutationFn: async () => {
@@ -50,7 +52,7 @@ const PostMenuAction = ({ post }) => {
               <FaEdit className="cursor-pointer" />
               <MdDeleteOutline
                 className="text-2xl cursor-pointer"
-                onClick={handleDelete}
+                onClick={() => setShowDeletePopup(true)}
               />
             </>
           )}
@@ -68,6 +70,12 @@ const PostMenuAction = ({ post }) => {
           </div>
         </span>
       </div>
+      {showDeletePopup && (
+        <DeletePopup
+          onConfirm={handleDelete}
+          onCancel={() => setShowDeletePopup(false)}
+        />
+      )}
     </>
   );
 };

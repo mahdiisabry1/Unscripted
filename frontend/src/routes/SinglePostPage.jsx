@@ -6,6 +6,8 @@ import { useQuery } from "@tanstack/react-query";
 import { format } from "timeago.js";
 import DOMPurify from "dompurify";
 import PostMenuAction from "../components/PostMenuAction";
+import PostNotFound from "../ui/PostNotFound";
+import LoadingAnimation from "../ui/LoadingAnimation";
 
 const fetchPost = async (slug) => {
   const res = await axios.get(`${import.meta.env.VITE_API_URL}/posts/${slug}`);
@@ -20,9 +22,9 @@ const SinglePostPage = () => {
     queryFn: () => fetchPost(slug),
   });
 
-  if (isPending) return "Loading";
+  if (isPending) return <LoadingAnimation />;
   if (error) return "Error.." + error.message;
-  if (!data) return "post not found";
+  if (!data) return <PostNotFound />;
 
   const sanitizedContent = DOMPurify.sanitize(data.content);
 
@@ -30,7 +32,10 @@ const SinglePostPage = () => {
     <>
       <div className="mx-10 md:mx-20 lg:mx-24 my-10">
         <div className="">
-          <Link to="/posts?cat=world" className="relative z-10 hover:text-red-800">
+          <Link
+            to="/posts?cat=world"
+            className="relative z-10 hover:text-red-800"
+          >
             {data.category}
           </Link>
         </div>
@@ -64,7 +69,7 @@ const SinglePostPage = () => {
             <div className="mt-5 text-justify [&_img]:max-w-full [&_img]:h-auto [&_img]:w-80 [&_img]:block [&_img]:mx-auto">
               <div dangerouslySetInnerHTML={{ __html: sanitizedContent }} />
             </div>
-            <PostMenuAction post={data}/>
+            <PostMenuAction post={data} />
             <Comments postId={data._id} />
           </div>
           <div className="border-2">AdBanner</div>
