@@ -22,7 +22,7 @@ doc = nlp(text)
 stopwords = list(STOP_WORDS)
 punctuation = punctuation + '\n'
 
-# Word tokenization (optional print)
+# Word tokenization
 tokens = [token.text for token in doc]
 print("Tokens:", tokens)
 
