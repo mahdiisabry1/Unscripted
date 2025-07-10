@@ -8,12 +8,14 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import DeletePopup from "../ui/DeletePopup";
+import SummerizerPopup from "../ui/SummerizerPopup";
 
 const PostMenuAction = ({ post }) => {
   const { user } = useUser();
   const { getToken } = useAuth();
   const navigate = useNavigate();
   const [showDeletePopup, setShowDeletePopup] = useState(false);
+  const [showSummaryPopup, setShowSummaryPopup] = useState(false);
 
   const deleteMutation = useMutation({
     mutationFn: async () => {
@@ -66,7 +68,9 @@ const PostMenuAction = ({ post }) => {
           />
           <div className="hover:text-red-600 cursor-pointer">Report</div>
           <div className="hover:text-gray-400 cursor-pointer">
-            <button className="p-4">Summarize</button>
+            <button className="p-4" onClick={() => setShowSummaryPopup(true)}>
+              Summarize
+            </button>
           </div>
         </span>
       </div>
@@ -75,6 +79,9 @@ const PostMenuAction = ({ post }) => {
           onConfirm={handleDelete}
           onCancel={() => setShowDeletePopup(false)}
         />
+      )}
+      {showSummaryPopup && (
+        <SummerizerPopup onCancel={() => setShowSummaryPopup(false)} />
       )}
     </>
   );

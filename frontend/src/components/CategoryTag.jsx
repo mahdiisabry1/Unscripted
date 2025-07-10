@@ -1,6 +1,7 @@
 import { useState } from "react";
 
-const CategoryTagInput = () => {
+// eslint-disable-next-line react/prop-types
+const CategoryTagInput = ({ onChange }) => {
   const [categories, setCategories] = useState([]);
   const [inputValue, setInputValue] = useState("");
 
@@ -21,6 +22,7 @@ const CategoryTagInput = () => {
     if (trimmedValue && !categories.includes(trimmedValue)) {
       setCategories([...categories, trimmedValue]);
       setInputValue("");
+      onChange([...categories, trimmedValue]);
     }
   };
 
@@ -29,6 +31,7 @@ const CategoryTagInput = () => {
       (category) => category !== categoryToRemove
     );
     setCategories(updatedCategories);
+    onChange(updatedCategories);
   };
 
   return (
@@ -38,7 +41,7 @@ const CategoryTagInput = () => {
       <div className="flex mb-2">
         <input
           type="text"
-          className="flex-grow px-3 py-2 border rounded-l focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="flex-grow px-3 py-2 border rounded-l focus:outline-none focus:ring-blue-500"
           placeholder="Type and press Enter to add categories..."
           value={inputValue}
           onChange={handleInputChange}

@@ -21,6 +21,11 @@ const CreateBlog = () => {
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [categories, setCategories] = useState([]);
+
+  const handleCategoryChange = (updatedCategories) => {
+    setCategories(updatedCategories);
+  };
 
   useEffect(() => {
     img && setValue((prev) => prev + `<p><image src="${img.url}"/></p>`);
@@ -66,7 +71,7 @@ const CreateBlog = () => {
     const data = {
       img: cover.filePath || "",
       title: formData.get("title"),
-      category: formData.get("category"),
+      category: categories,
       desc: formData.get("desc"),
       content: value,
     };
@@ -113,7 +118,6 @@ const CreateBlog = () => {
                 </svg>
               </div>
             </div>
-            <div className="w-full pointer-events-none">Hello</div>
           </Upload>
           <input
             className="font-semibold bg-transparent p-4"
@@ -124,7 +128,7 @@ const CreateBlog = () => {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
-          <CategoryTagInput />
+          <CategoryTagInput onChange={handleCategoryChange} />
           <button
             type="button"
             className="ml-2 px-4 py-2 bg-blue-500 text-white rounded"

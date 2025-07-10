@@ -16,7 +16,7 @@ def summarize_text(text):
     punctuation_list = list(punctuation) + ['\n']
 
 
-# Word tokenization
+    # Word tokenization
     tokens = [token.text for token in doc]
     print("Tokens:", tokens)
 
@@ -42,10 +42,6 @@ def summarize_text(text):
     # Sentence tokenization
     sentence_tokens = [sent for sent in doc.sents]
 
-    final_summary = ' '.join([sent.text for sent in summary_sentences])
-    print("\nSummary:")
-    print(final_summary)
-
     # Score sentences based on word frequencies
     sentence_scores = {}
     for sent in sentence_tokens:
@@ -66,16 +62,20 @@ def summarize_text(text):
     
     return final_summary
 
+
+
 @app.route('/summarize', methods=['POST'])
 def summarize():
     data = request.get_json()
-    if 'text' not in data:
-        return jsonify({'error': 'No text provided'}), 400
-    
-    text = data['text']
-    summary = summarize_text(text)
-    
-    return jsonify({'summary': summary})
+    if not data or 'text' not in data or not data['text'].strip():
+        return jsonify({'error': 'No valid text provided'}), 400
+
+    try:
+        text = data['text']
+        summary = summarize_text(text)
+        return jsonify({'summary': summary})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
     app.run(debug=True)

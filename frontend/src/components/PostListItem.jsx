@@ -33,10 +33,6 @@ const PostListItem = ({ post }) => {
               <span>Written by - </span>
               <Link>{post.user.username}</Link>
             </div>
-            <div>
-              <span>On - </span>
-              <Link to={`/${post.category}`}>{post.category}</Link>
-            </div>
             <span>{format(post.createdAt)}</span>
           </div>
         </div>

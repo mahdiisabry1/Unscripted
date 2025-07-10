@@ -32,14 +32,6 @@ const SinglePostPage = () => {
     <>
       <div className="mx-10 md:mx-20 lg:mx-24 my-10">
         <div className="">
-          <Link
-            to="/posts?cat=world"
-            className="relative z-10 hover:text-red-800"
-          >
-            {data.category}
-          </Link>
-        </div>
-        <div className="">
           <h1 className="text-5xl mb-4">{data.title}</h1>
           <div>
             <span>
@@ -68,6 +60,17 @@ const SinglePostPage = () => {
             </div>
             <div className="mt-5 text-justify [&_img]:max-w-full [&_img]:h-auto [&_img]:w-80 [&_img]:block [&_img]:mx-auto">
               <div dangerouslySetInnerHTML={{ __html: sanitizedContent }} />
+            </div>
+            <div className="">
+              {data.category.map((cat, index) => (
+                <Link
+                  key={index}
+                  to={`/posts?cat=${encodeURIComponent(cat)}`}
+                  className="relative z-10 font-extrabold hover:text-red-800 mr-2"
+                >
+                  #{cat}
+                </Link>
+              ))}
             </div>
             <PostMenuAction post={data} />
             <Comments postId={data._id} />
