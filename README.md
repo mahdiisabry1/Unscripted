@@ -31,5 +31,6 @@ Welcome to the repository for **Unscripted**. This project is undergoing signifi
 ---
 
 As the project is still under development, some parts of the codebase may be unstable or subject to change. If you'd like to contribute, please reach out to the maintainers for guidance on current priorities and best practices.
+figma - https://www.figma.com/design/onlXH4lDUOZkW4P8WHlhmF/UnScripted-Project?node-id=0-1&m=dev&t=Rsr8zrdqLRRVXjIF-1
 
 ![localhost_5173_](https://github.com/user-attachments/assets/43b4bd8c-b0c4-4494-b9a3-a60ac3864748)
