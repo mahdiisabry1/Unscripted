@@ -1,6 +1,5 @@
 # Unscripted 🚀
 
-🚧 **This project is currently under active development.** 🚧
 
 Welcome to the repository for **Unscripted**. This project is undergoing significant enhancements, including the integration of advanced AI capabilities and preparation for deployment.
 
