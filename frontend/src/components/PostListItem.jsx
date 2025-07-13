@@ -25,8 +25,9 @@ const PostListItem = ({ post }) => {
             <p>{post.title}</p>
           </Link>
           <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-            Dignissimos magnam molestias recusandae totam minima!
+            {post.desc.length > 180
+              ? post.desc.slice(0, 180) + " ReadMore..."
+              : post.desc}
           </p>
           <div className="flex gap-7">
             <div>

@@ -44,7 +44,7 @@ const CreateBlog = () => {
   const mutation = useMutation({
     mutationFn: async (newPost) => {
       const token = await getToken();
-      console.log(token);
+      //console.log(token);
       return axios.post(`${import.meta.env.VITE_API_URL}/posts`, newPost, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -68,6 +68,20 @@ const CreateBlog = () => {
     e.preventDefault();
 
     const formData = new FormData(e.target);
+    if (!cover || !cover.filePath) {
+      toast.error("Cover image is required");
+      return;
+    }
+    if (!title) {
+      toast.error("Title is required");
+      return;
+    }
+
+    if (!description || description.length < 100) {
+      toast.error("Description should be at least 100 characters");
+      return;
+    }
+
     const data = {
       img: cover.filePath || "",
       title: formData.get("title"),
