@@ -38,17 +38,17 @@ const PostList = () => {
   return (
     <>
       <InfiniteScroll
-        dataLength={allPosts.length} //This is important field to render the next data
+        dataLength={allPosts.length} 
         next={fetchNextPage}
         hasMore={!!hasNextPage}
-        loader={<h4>Loading...</h4>}
+        loader={<h4>Loading...</h4>} 
         endMessage={
           <p>
             <b>Yay! You have seen it all</b>
           </p>
         }
       >
-        {allPosts.slice().reverse().map((post) => (
+        {allPosts.slice().map((post) => (
           <PostListItem key={post._id} post={post} />
         ))}
       </InfiniteScroll>

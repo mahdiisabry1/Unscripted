@@ -6,8 +6,55 @@ export const getPosts = async (req, res) => {
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.page) || 5;
 
+  const query = {}; // Initialize an empty query object
+
+  const cat = req.query.cat;
+  const author = req.query.author;
+  const search = req.query.search;
+  const sort = req.query.sort;
+  const featured = req.query.featured;
+
+  if (cat) {
+    query.category = cat; // Filter by category
+  }
+
+  if (search) {
+    query.title = { $regex: search, $options: "i" }; // Search by title
+  }
+
+  if (author) {
+    const user = await User.findOne({ username: author }).select("_id");
+    if (!user) {
+      return res.status(404).json("User not found");
+    }
+    query.user = user._id; // Filter by author
+  }
+
+  let sortObj = { createdAt: -1 };
+  if (sort) {
+    switch (sort) {
+      case "latest":
+        sortObj = { createdAt: -1 }; // Sort by latest
+        break;
+      case "oldest":
+        sortObj = { createdAt: 1 }; // Sort by oldest
+        break;
+      case "popular":
+        sortObj = { visit: -1 }; // Sort by most popular
+        break;
+      case "trending":
+        sortObj = { visit: -1, createdAt: -1 }; // Sort by trending
+        break; 
+    }
+  }
+
+  if (featured) {
+    query.featured = true; // Filter by featured posts      
+  }
+
   const posts = await Post.find()
     .populate("user", "username")
+    .sort(sortObj)
     .limit(limit)
     .skip((page - 1) * limit);
 
