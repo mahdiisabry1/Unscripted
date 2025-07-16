@@ -44,12 +44,12 @@ export const getPosts = async (req, res) => {
         break;
       case "trending":
         sortObj = { visit: -1, createdAt: -1 }; // Sort by trending
-        break; 
+        break;
     }
   }
 
   if (featured) {
-    query.featured = true; // Filter by featured posts      
+    query.featured = true; // Filter by featured posts
   }
 
   const posts = await Post.find()
@@ -96,6 +96,7 @@ export const createPost = async (req, res) => {
 
   const newPost = new Post({ user: user._id, slug, ...req.body });
   const post = await newPost.save();
+
   res.status(200).json(post);
 };
 
