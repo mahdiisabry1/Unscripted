@@ -90,7 +90,10 @@ const Navbar = () => {
             </Link>
           </SignedOut>
           <SignedIn>
-            <Link to="/profile" className="flex items-center gap-2">
+            <Link
+              to="/profile/me/:username"
+              className="flex items-center gap-2"
+            >
               <FaUser />
               Profile
             </Link>

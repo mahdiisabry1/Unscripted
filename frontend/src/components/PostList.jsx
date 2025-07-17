@@ -22,7 +22,7 @@ const PostList = () => {
     status,
   } = useInfiniteQuery({
     queryKey: ["posts"],
-    queryFn: (pageParam = 1) => fetchPosts(pageParam),
+    queryFn: ({pageParam = 1}) => fetchPosts(pageParam),
     initialPageParam: 1,
     getNextPageParam: (lastPage, pages) =>
       lastPage.hasMore ? pages.length + 1 : undefined,

@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 import { IKContext, IKUpload } from "imagekitio-react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { toast } from "react-toastify";
+import LoadingAnimation from "../ui/LoadingAnimation";
 
 const authenticator = async () => {
   try {
@@ -26,20 +27,27 @@ const authenticator = async () => {
 
 const Upload = ({ children, type, setProgress, setData }) => {
   const ref = useRef(null);
+  const [isUploading, setIsUploading] = useState(false);
 
   const onError = (err) => {
     console.log(err);
     toast.error("Image upload failed");
+    setIsUploading(false);
   };
 
   const onSuccess = (res) => {
     console.log(res);
     toast.success("Image uploaded");
+    setIsUploading(false);
     setData(res);
   };
 
   const onUploadProgress = (progress) => {
-    setProgress(Math.round((progress.loaded / progress.total) * 100));
+    const percentage = Math.round((progress.loaded / progress.total) * 100);
+    setProgress(percentage);
+    if (percentage < 100) {
+      setIsUploading(true);
+    }
   };
   return (
     <>
@@ -58,7 +66,7 @@ const Upload = ({ children, type, setProgress, setData }) => {
           accept={`${type}/*`}
         />
         <div className="w-full flex gap-5" onClick={() => ref.current.click()}>
-          {children}
+          {isUploading ? <LoadingAnimation/> : children}
         </div>
       </IKContext>
     </>

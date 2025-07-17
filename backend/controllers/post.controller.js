@@ -4,7 +4,7 @@ import User from "../models/user.model.js";
 
 export const getPosts = async (req, res) => {
   const page = parseInt(req.query.page) || 1;
-  const limit = parseInt(req.query.page) || 5;
+  const limit = parseInt(req.query.limit) || 5;
 
   const query = {}; // Initialize an empty query object
 
@@ -97,6 +97,9 @@ export const createPost = async (req, res) => {
   const newPost = new Post({ user: user._id, slug, ...req.body });
   const post = await newPost.save();
 
+  user.createdPosts.push(post._id);
+  await user.save();
+
   res.status(200).json(post);
 };
 
@@ -117,7 +120,11 @@ export const deletePost = async (req, res) => {
   if (!deletedPost) {
     return res.status(403).json("You can't delete this!");
   }
-  res.status(200).json("Post deleted");
+  user.createdPosts = user.createdPosts.filter(
+    (postId) => postId.toString() !== deletedPost._id.toString()
+  );
+  await user.save();
+  return res.status(200).json("Post deleted");
 };
 
 const imagekit = new ImageKit({

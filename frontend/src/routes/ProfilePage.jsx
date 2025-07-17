@@ -5,10 +5,12 @@ import LoadingAnimation from "../ui/LoadingAnimation";
 import PostNotFound from "../ui/PostNotFound";
 import { useAuth } from "@clerk/clerk-react";
 import Images from "../components/Images";
+import UserProfile from "../components/UserProfile";
 
 const ProfilePage = () => {
   const { userPostId } = useParams();
   const { getToken } = useAuth();
+
 
   const fetchUserPosts = async () => {
     const token = await getToken();
@@ -36,24 +38,7 @@ const ProfilePage = () => {
   return (
     <>
       <div className="grid grid-cols-5 grid-rows-5 gap-4 mt-5 h-[85vh]">
-        <div className="row-span-2">
-          <div className="w-full h-full bg-slate-300">
-            <Images src={data[0].img} className="h-full" alt="Image" />
-          </div>
-        </div>
-        <div className="col-span-2 row-span-3 col-start-1 row-start-3">
-          About Me
-        </div>
-        <div className="row-span-2">
-          <div className=""></div>
-          <div className="">Title : </div>
-          <div className="">Total Posts : {data.length}</div>
-          <div className="">Total post views : </div>
-          <div className="flex flex-col">
-            <div>Send Message : {data[0].user.email}</div>
-            <div>Report User</div>
-          </div>
-        </div>
+        <UserProfile />
         <div className="col-span-3 row-span-5 col-start-3 row-start-1 ">
           {data.map((post) => (
             <div
