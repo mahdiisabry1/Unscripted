@@ -17,6 +17,7 @@
     "dompurify": "^3.2.4",
     "express": "^5.0.1",
     "imagekit": "^5.2.0",
+    "mongodb": "^7.1.0",
     "mongoose": "^8.8.2",
     "svix": "^1.41.0"
   }

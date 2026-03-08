@@ -75,7 +75,7 @@ const FeaturedPosts = () => {
             className="group text-white font-extrabold md:text-2xl lg:text-3xl cursor-pointer hover:underline text-justify"
           >
             <Images
-              src="default-image.jpg"
+              src="freePalestine_UGzot7U5i.jpg"
               className="object-cover w-full h-full transform transition-transform duration-300 group-hover:scale-110"
               alt="The-Breaking0Image"
             />
