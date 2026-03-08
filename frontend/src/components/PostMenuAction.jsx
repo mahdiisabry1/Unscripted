@@ -81,7 +81,7 @@ const PostMenuAction = ({ post }) => {
         />
       )}
       {showSummaryPopup && (
-        <SummerizerPopup onCancel={() => setShowSummaryPopup(false)} />
+        <SummerizerPopup onCancel={() => setShowSummaryPopup(false)} content={post.content} />
       )}
     </>
   );

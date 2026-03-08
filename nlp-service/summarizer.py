@@ -3,9 +3,11 @@ from flask import Flask, request, jsonify
 from spacy.lang.en.stop_words import STOP_WORDS
 from string import punctuation
 from heapq import nlargest
+from flask_cors import CORS
 
 app = Flask(__name__)
 nlp = spacy.load('en_core_web_sm')
+CORS(app)
 
 def summarize_text(text):
     # Process the text using spaCy
@@ -18,7 +20,7 @@ def summarize_text(text):
 
     # Word tokenization
     tokens = [token.text for token in doc]
-    print("Tokens:", tokens)
+    # print("Tokens:", tokens)
 
     # Word tokenization
     tokens = [token.text for token in doc]
