@@ -3,7 +3,7 @@ name: MERN Server CI/CD
 on:
   push:
     branches:
-      - main
+      - production
     paths:
       - 'server/**'   # only run when server changes
 
@@ -13,7 +13,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: server   # run inside /server
+        working-directory: backend   # run inside /server
 
     steps:
       # 1. Checkout repo
