@@ -1,6 +1,14 @@
 import Post from "../models/post.model.js";
 import User from "../models/user.model.js";
 
+export const getUser = async (req, res) => {
+    const id = req.params.id;
+
+    const user = await User.findById(id);
+    res.status(200).json(user);
+    
+}
+
 export const userCreatedPosts = async (req, res) => {
     const clerkUserId = req.auth.userId;
 

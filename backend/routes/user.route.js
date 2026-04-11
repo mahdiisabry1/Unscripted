@@ -1,5 +1,6 @@
 import express from "express";
 import {
+  getUser,
   getUserSavedPosts,
   savePost,
   userCreatedPosts,
@@ -7,6 +8,7 @@ import {
 
 const router = express.Router();
 
+router.get("/me/:id", getUser)
 router.get("/:usePostId", userCreatedPosts);
 router.get("/saved", getUserSavedPosts);
 router.patch("/save", savePost);
