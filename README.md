@@ -13,4 +13,7 @@ Welcome to the repository for **Unscripted**. This project is undergoing signifi
 
 ---
 
+<img width="1465" height="1262" alt="localhost_5173_" src="https://github.com/user-attachments/assets/d41da6cf-1464-446c-81f4-cc1c90b41132" />
+
+
 
